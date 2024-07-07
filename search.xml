@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>ZBNBLOG第一篇测试文章</title>
+    <url>/2024/06/02/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/</url>
+    <content><![CDATA[<p>这是一篇测试文章<br>。。。</p>
+]]></content>
+      <categories>
+        <category>公告</category>
+      </categories>
+      <tags>
+        <tag>公告</tag>
+        <tag>测试文章</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>[404]</title>
+    <url>/404.html</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>张明月的自我介绍</title>
+    <url>/about/index.html</url>
+    <content><![CDATA[<p>你好，我是一名在校学生，很高兴认识你。<br>我最近在研究hexo搭建的网站<br>这个网站是我的博客网站</p>
+<p>*本篇文章还在编辑中。。。</p>
+]]></content>
+  </entry>
+</search>
