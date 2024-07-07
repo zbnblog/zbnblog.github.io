@@ -13,16 +13,4 @@
         <tag>测试文章</tag>
       </tags>
   </entry>
-  <entry>
-    <title>[404]</title>
-    <url>/404.html</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>张明月的自我介绍</title>
-    <url>/about/index.html</url>
-    <content><![CDATA[<p>你好，我是一名在校学生，很高兴认识你。<br>我最近在研究hexo搭建的网站<br>这个网站是我的博客网站</p>
-<p>*本篇文章还在编辑中。。。</p>
-]]></content>
-  </entry>
 </search>
