@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>ZBNBLOG第一篇测试文章</title>
-    <url>/2024/06/02/firsttest/</url>
-    <content><![CDATA[<p>这是一篇测试文章<br>test</p>
+    <title>测试24-0708</title>
+    <url>/2024/07/08/test/</url>
+    <content><![CDATA[<h1 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><blockquote>
+<p>引用  </p>
+<blockquote>
+<p><em><strong>11</strong></em></p>
+</blockquote>
+</blockquote>
+<hr>
+<p>文章内容…<br>111</p>
+<hr>
 ]]></content>
       <categories>
-        <category>公告</category>
+        <category>测试</category>
       </categories>
       <tags>
-        <tag>公告</tag>
-        <tag>测试文章</tag>
+        <tag>测试</tag>
       </tags>
   </entry>
 </search>
