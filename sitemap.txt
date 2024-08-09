@@ -1,16 +1,10 @@
+https://zbnblog.github.io/tags/index.html
 https://zbnblog.github.io/2024/08/01/installtwikoo/
 https://zbnblog.github.io/2024/08/04/zbnbloggonggao/
 https://zbnblog.github.io/2024/07/29/installparrot/
-https://zbnblog.github.io/itphoto/index.html
-https://zbnblog.github.io/album/index.html
-https://zbnblog.github.io/fcircle/index.html
-https://zbnblog.github.io/json/music.json
-https://zbnblog.github.io/music/index.html
 https://zbnblog.github.io/about/index.html
 https://zbnblog.github.io/equipment/index.html
-https://zbnblog.github.io/link/index.html
 https://zbnblog.github.io/categories/index.html
-https://zbnblog.github.io/tags/index.html
 https://zbnblog.github.io/
 https://zbnblog.github.io/tags/Web/
 https://zbnblog.github.io/tags/Vercel/
