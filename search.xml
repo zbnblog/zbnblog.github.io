@@ -1,60 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hexo博客安装Twikoo评论区</title>
-    <url>/2024/08/01/58/</url>
-    <content><![CDATA[<h1 id="Hexo安装Twikoo评论区（通用）"><a href="#Hexo安装Twikoo评论区（通用）" class="headerlink" title="Hexo安装Twikoo评论区（通用）"></a>Hexo安装Twikoo评论区（通用）</h1><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>其实本文并不只针对Hexo博客框架安装Twikoo，<em><strong>本文适用于任何需要给自己网站添加评论区的人！</strong></em><br>本文使用的是<code>Hexo框架</code>与<code>Butterfly主题</code>，并使用<code>Vercel</code>进行配置哦~<br><em><strong><font color = red>提醒：中国大陆访问本文中的Vercel和Twikoo官网及部署时大概率出现网络被“墙”的问题（网络不通），要解决这个问题，明月给你们的建议就是进行“科学上网”，对应的脚本可以到本站置顶公告文章中寻找。</font></strong></em></p>
-<h3 id="为什么选用Twikoo？"><a href="#为什么选用Twikoo？" class="headerlink" title="为什么选用Twikoo？"></a>为什么选用Twikoo？</h3><p>Twikoo是一款简洁、安全、免费的网站评论系统，支持邮箱通知管理员和垃圾评论检测，防XSS，支持限制IP发言次数，并且内嵌了一个管理面板，简单易用，所以在我建站之初便选用了Twikoo。</p>
-<h3 id="明月提醒"><a href="#明月提醒" class="headerlink" title="明月提醒"></a>明月提醒</h3><h5 id="本文章需要你有一定的Vercel和后端数据库的知识。"><a href="#本文章需要你有一定的Vercel和后端数据库的知识。" class="headerlink" title="本文章需要你有一定的Vercel和后端数据库的知识。"></a>本文章需要你有一定的Vercel和后端数据库的知识。</h5><p>详见官方页面<code>https://twikoo.js.org/backend.html#vercel-%E9%83%A8%E7%BD%B2</code>，<br>可参考官方视频教程<code>https://www.bilibili.com/video/BV1Fh411e7ZH</code>.</p>
-<h3 id="第一步：MongoDB"><a href="#第一步：MongoDB" class="headerlink" title="第一步：MongoDB"></a>第一步：MongoDB</h3><p>若想存储评论数据，当然要选择一个数据库了，那就是MongoDB！<br>首先在<code>https://www.mongodb.com/zh-cn/cloud/atlas/register</code>注册一个MongoDB账户,<br>选免费数据库，类型选择<code>Shared</code>，<br>区域选择 <code>AWS / N. Virginia (us-east-1)</code>，<br>当然了，你也可以使用Google登录。<br>全搞定之后点击<code>Connect</code>按钮。<br>连接方式选择<code>Connect your application</code>,<br>下一步安全配置请输入<code>0.0.0.0/0</code>以允许所有 IP 地址的连接，并创建数据库用户。<br>数据库的账户密码要妥善保管！<br><em><strong>并记录连接字符串！记得将其中的 <code>&lt;password&gt;</code> 修改为刚设置的账户密码！</strong></em><br><em><strong><font color = red>注意了，这一步较为麻烦，请参考官方教程视频<code>https://www.bilibili.com/video/BV1Fh411e7ZH</code>进行详细配置！</font></strong></em><br>–&gt; 到此，你获得了MongoDB数据库账户连接字符串，请记好这个字符串，在后面的步骤会用到。</p>
-<h3 id="第二步：Vercel"><a href="#第二步：Vercel" class="headerlink" title="第二步：Vercel"></a>第二步：Vercel</h3><p>Vercel是官方提供众多部署方案中最简洁且免费的部署方案了。注意，Vercel 部署的环境需配合 1.4.0 以上版本的 twikoo.js 使用，默认域名<code>*.vercel.app</code>在中国大陆访问速度较慢甚至无法访问，绑定自己的域名可以提高访问速度。<br>先在<code>https://vercel.com/signup</code>申请 Vercel 账号，<br>再在官方点击一键部署按钮或访问<code>https://vercel.com/import/project?template=https://github.com/twikoojs/twikoo/tree/main/src/server/vercel-min</code>进行部署。<br>进入面板的<code>Settings - Environment Variables</code>，添加环境变量 <code>MONGODB_URI</code>，<em><strong>值</strong></em>为前面记录的<strong>MongoDB数据库连接字符串</strong>，<br>进入 <code>Settings - Deployment Protection</code>，设置 <code>Vercel Authentication</code> 为 <code>Disabled</code>，并保存配置，<br>进入 <code>Deployments</code> , 然后在任意一项后面点击<code>更多（三个点）</code>, 然后点击 <code>Redeploy</code>, 最后点击下面的 <code>Redeploy</code>，<br>进入<code>Overview</code>，点击 <code>Domains</code>下方的链接，如果环境配置正确，可以看到 <code>“Twikoo 云函数运行正常”</code> 的提示.<br>Vercel Domains（包含 <code>https://</code> 前缀，例如 <code>https://xxx.vercel.app</code>）即为您的 Vercel 环境 id。<br>–&gt; 到此，你获得了 Vercel 环境 ID （一个网址），请记好这个环境 ID，后面要用到。<br><strong>如果你不想自己的评论系统总是被“墙”，那么可以考虑花钱买域名进行配置，当然了，明月写这篇文章是为了完全零成本的，所以不会提及到，相关配置请自行上网搜索。</strong></p>
-<h3 id="第三步：修改主题配置文件"><a href="#第三步：修改主题配置文件" class="headerlink" title="第三步：修改主题配置文件"></a>第三步：修改主题配置文件</h3><p>好了，现在我们的数据库有了，环境ID也有了，那么就可以正式开始对我们的博客配置文件<code>“_config.yml”</code>进行相关修改了。<br>打开主题的配置文件，找到评论的配置，改成使用<code>twikoo</code>，再在下方找到<code>twikoo:</code>的配置（若找不到配置请查找你所使用主题的文档），这个配置只需要修改<code>envID</code>部分为你的<code>Vercel环境ID（一个网址）</code>就行了。<br>然后进行Hexo的配置与部署就完成了！</p>
-]]></content>
-      <categories>
-        <category>IT</category>
-      </categories>
-      <tags>
-        <tag>Web</tag>
-        <tag>Vercel</tag>
-        <tag>Twikoo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>安装Parrot操作系统到VMware</title>
-    <url>/2024/07/29/11/</url>
-    <content><![CDATA[<h1 id="安装Parrot操作系统到VMware虚拟机"><a href="#安装Parrot操作系统到VMware虚拟机" class="headerlink" title="安装Parrot操作系统到VMware虚拟机"></a>安装Parrot操作系统到VMware虚拟机</h1><hr>
-<h2 id="本文完全原创，转载请标明原链接"><a href="#本文完全原创，转载请标明原链接" class="headerlink" title="本文完全原创，转载请标明原链接"></a>本文完全原创，转载请标明原链接</h2><p><font color="red"># 注意：阅读本文需要一定的VMware经验和计算机知识。</font></p>
-<hr>
-<h1 id="①-安装Parrot到VMware"><a href="#①-安装Parrot到VMware" class="headerlink" title="①.安装Parrot到VMware"></a>①.安装Parrot到VMware</h1><ol>
-<li>获得镜像。 我们要安装任何一个操作系统，首要的任务当然是获得那个系统的镜像， 所以需要前往Parrot OS的官网进行下载。<br><a href="https://www.parrotsec.org/download/">【点击这里前往Parrot官网进行安装】</a><br>或前往 <a href="http://www.parrotsec.org/download">www.parrotsec.org/download</a><br>选择一个适合的版本进行下载<font color="red">（本文使用的是iso镜像）</font>，有时候可能安装速度极慢，则用IDM等工具解决此问题。<br></li>
-<li>打开VMware。（我相信你们应该有办法解决VMware的许可证问题）<br>选择“创建新的虚拟机”，选择“典型”，在下一步中选择“安装程序光盘映像文件”并选中Parrot操作系统映像文件。<br></li>
-<li>创建虚拟机。下一步选择客户机操作系统为“Linux”，版本选“Debian 10.x 64位“，下一步，根据你的需要，改虚拟机名称和虚拟机位置。下一步根据需要，设置磁盘大小（不建议低于20GB）和虚拟磁盘的储存方式。下一步记得自定义系统硬件配置（Parrot系统要求内存不能低于4GB，否则有些功能将被停止），然后点击”完成“<br></li>
-<li>启动虚拟机。并根据系统界面的指示进行安装（6.1版本请选择带”try&#x2F;install“的一项进入系统，此时桌面上应有安装程序，点击进入才可以进入安装程序），设置磁盘分区时请选择”使用整个磁盘“并不要对磁盘进行加密，确保所有配置无误后开始安装。<br></li>
-<li>重启。待安装完毕后按照系统提示进行重启，再次开机后应进入系统桌面（有密码的需要输入用户密码），版本≥6的不需要再次设置语言，因为安装的时候已经改变系统语言了。<br></li>
-<li>设置sudo。此时你的系统无法使用sudo命令，因为没有设置root账户，需要开启终端输入<code>sudo passwd root</code>进行设置密码（设置root密码时，密码不会明文显示）。<br></li>
-</ol>
-<h1 id="②-优化系统与换源（进阶）"><a href="#②-优化系统与换源（进阶）" class="headerlink" title="②.优化系统与换源（进阶）"></a>②.优化系统与换源（进阶）</h1><h3 id="1-换源可以使系统更新源的速度更加快捷"><a href="#1-换源可以使系统更新源的速度更加快捷" class="headerlink" title="1. 换源可以使系统更新源的速度更加快捷"></a>1. 换源可以使系统更新源的速度更加快捷</h3><h5 id="更新源的位置：-etc-apt-sources-list-d-parrot-list"><a href="#更新源的位置：-etc-apt-sources-list-d-parrot-list" class="headerlink" title="更新源的位置：&#x2F;etc&#x2F;apt&#x2F;sources.list.d&#x2F;parrot.list "></a>更新源的位置：&#x2F;etc&#x2F;apt&#x2F;sources.list.d&#x2F;parrot.list <br></h5><h5 id="换源："><a href="#换源：" class="headerlink" title="换源："></a>换源：<br></h5><ol>
-<li>官方更新源（速度一般）：<br><code>deb http://deb.parrotsec.org/parrot stable main contrib non-free</code>  </li>
-<li>清华大学镜像源（速度快）：<br><code>deb https://mirrors.tuna.tsinghua.edu.cn/parrot/ parrot main contrib non-free</code>  </li>
-<li>命令行：</li>
-</ol>
-<pre><code class="bash">备份源文件  
-$ sudo cp /etc/apt/sources.list.d/parrot.list /etc/apt/sources.list.d/parrot.list.bak  
-更改源文件  
-$ sudo vim /etc/apt/sources.list.d/parrot.list  
-</code></pre>
-<p>在vim终端编辑器先点击<kbd>ESC</kbd>确保不在写入的模式，然后输入<code>:%d</code>删除所有行，再点击<kbd>A</kbd>进入输入模式，输入要改变的源并再次点击<kbd>ESC</kbd>退出输入模式，输入<code>:wq</code>保存并退出<br>注：vim终端编辑器的操作详见<br><a href="https://blog.csdn.net/u011511601/article/details/80655431">https://blog.csdn.net/u011511601/article/details/80655431</a></p>
-<hr>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>Parrot-OS</tag>
-        <tag>操作系统</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ZBNBLOG必看公告</title>
     <url>/2024/08/04/45/</url>
     <content><![CDATA[<h1 id="ZBNBLOG公告"><a href="#ZBNBLOG公告" class="headerlink" title="ZBNBLOG公告"></a>ZBNBLOG公告</h1><p>版本：1.1—&gt;更新日期：2024-08-07  </p>
@@ -128,6 +74,60 @@ $ sudo vim /etc/apt/sources.list.d/parrot.list
       <tags>
         <tag>必读</tag>
         <tag>原创</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo博客安装Twikoo评论区</title>
+    <url>/2024/08/01/58/</url>
+    <content><![CDATA[<h1 id="Hexo安装Twikoo评论区（通用）"><a href="#Hexo安装Twikoo评论区（通用）" class="headerlink" title="Hexo安装Twikoo评论区（通用）"></a>Hexo安装Twikoo评论区（通用）</h1><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>其实本文并不只针对Hexo博客框架安装Twikoo，<em><strong>本文适用于任何需要给自己网站添加评论区的人！</strong></em><br>本文使用的是<code>Hexo框架</code>与<code>Butterfly主题</code>，并使用<code>Vercel</code>进行配置哦~<br><em><strong><font color = red>提醒：中国大陆访问本文中的Vercel和Twikoo官网及部署时大概率出现网络被“墙”的问题（网络不通），要解决这个问题，明月给你们的建议就是进行“科学上网”，对应的脚本可以到本站置顶公告文章中寻找。</font></strong></em></p>
+<h3 id="为什么选用Twikoo？"><a href="#为什么选用Twikoo？" class="headerlink" title="为什么选用Twikoo？"></a>为什么选用Twikoo？</h3><p>Twikoo是一款简洁、安全、免费的网站评论系统，支持邮箱通知管理员和垃圾评论检测，防XSS，支持限制IP发言次数，并且内嵌了一个管理面板，简单易用，所以在我建站之初便选用了Twikoo。</p>
+<h3 id="明月提醒"><a href="#明月提醒" class="headerlink" title="明月提醒"></a>明月提醒</h3><h5 id="本文章需要你有一定的Vercel和后端数据库的知识。"><a href="#本文章需要你有一定的Vercel和后端数据库的知识。" class="headerlink" title="本文章需要你有一定的Vercel和后端数据库的知识。"></a>本文章需要你有一定的Vercel和后端数据库的知识。</h5><p>详见官方页面<code>https://twikoo.js.org/backend.html#vercel-%E9%83%A8%E7%BD%B2</code>，<br>可参考官方视频教程<code>https://www.bilibili.com/video/BV1Fh411e7ZH</code>.</p>
+<h3 id="第一步：MongoDB"><a href="#第一步：MongoDB" class="headerlink" title="第一步：MongoDB"></a>第一步：MongoDB</h3><p>若想存储评论数据，当然要选择一个数据库了，那就是MongoDB！<br>首先在<code>https://www.mongodb.com/zh-cn/cloud/atlas/register</code>注册一个MongoDB账户,<br>选免费数据库，类型选择<code>Shared</code>，<br>区域选择 <code>AWS / N. Virginia (us-east-1)</code>，<br>当然了，你也可以使用Google登录。<br>全搞定之后点击<code>Connect</code>按钮。<br>连接方式选择<code>Connect your application</code>,<br>下一步安全配置请输入<code>0.0.0.0/0</code>以允许所有 IP 地址的连接，并创建数据库用户。<br>数据库的账户密码要妥善保管！<br><em><strong>并记录连接字符串！记得将其中的 <code>&lt;password&gt;</code> 修改为刚设置的账户密码！</strong></em><br><em><strong><font color = red>注意了，这一步较为麻烦，请参考官方教程视频<code>https://www.bilibili.com/video/BV1Fh411e7ZH</code>进行详细配置！</font></strong></em><br>–&gt; 到此，你获得了MongoDB数据库账户连接字符串，请记好这个字符串，在后面的步骤会用到。</p>
+<h3 id="第二步：Vercel"><a href="#第二步：Vercel" class="headerlink" title="第二步：Vercel"></a>第二步：Vercel</h3><p>Vercel是官方提供众多部署方案中最简洁且免费的部署方案了。注意，Vercel 部署的环境需配合 1.4.0 以上版本的 twikoo.js 使用，默认域名<code>*.vercel.app</code>在中国大陆访问速度较慢甚至无法访问，绑定自己的域名可以提高访问速度。<br>先在<code>https://vercel.com/signup</code>申请 Vercel 账号，<br>再在官方点击一键部署按钮或访问<code>https://vercel.com/import/project?template=https://github.com/twikoojs/twikoo/tree/main/src/server/vercel-min</code>进行部署。<br>进入面板的<code>Settings - Environment Variables</code>，添加环境变量 <code>MONGODB_URI</code>，<em><strong>值</strong></em>为前面记录的<strong>MongoDB数据库连接字符串</strong>，<br>进入 <code>Settings - Deployment Protection</code>，设置 <code>Vercel Authentication</code> 为 <code>Disabled</code>，并保存配置，<br>进入 <code>Deployments</code> , 然后在任意一项后面点击<code>更多（三个点）</code>, 然后点击 <code>Redeploy</code>, 最后点击下面的 <code>Redeploy</code>，<br>进入<code>Overview</code>，点击 <code>Domains</code>下方的链接，如果环境配置正确，可以看到 <code>“Twikoo 云函数运行正常”</code> 的提示.<br>Vercel Domains（包含 <code>https://</code> 前缀，例如 <code>https://xxx.vercel.app</code>）即为您的 Vercel 环境 id。<br>–&gt; 到此，你获得了 Vercel 环境 ID （一个网址），请记好这个环境 ID，后面要用到。<br><strong>如果你不想自己的评论系统总是被“墙”，那么可以考虑花钱买域名进行配置，当然了，明月写这篇文章是为了完全零成本的，所以不会提及到，相关配置请自行上网搜索。</strong></p>
+<h3 id="第三步：修改主题配置文件"><a href="#第三步：修改主题配置文件" class="headerlink" title="第三步：修改主题配置文件"></a>第三步：修改主题配置文件</h3><p>好了，现在我们的数据库有了，环境ID也有了，那么就可以正式开始对我们的博客配置文件<code>“_config.yml”</code>进行相关修改了。<br>打开主题的配置文件，找到评论的配置，改成使用<code>twikoo</code>，再在下方找到<code>twikoo:</code>的配置（若找不到配置请查找你所使用主题的文档），这个配置只需要修改<code>envID</code>部分为你的<code>Vercel环境ID（一个网址）</code>就行了。<br>然后进行Hexo的配置与部署就完成了！</p>
+]]></content>
+      <categories>
+        <category>IT</category>
+      </categories>
+      <tags>
+        <tag>Web</tag>
+        <tag>Vercel</tag>
+        <tag>Twikoo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>安装Parrot操作系统到VMware</title>
+    <url>/2024/07/29/11/</url>
+    <content><![CDATA[<h1 id="安装Parrot操作系统到VMware虚拟机"><a href="#安装Parrot操作系统到VMware虚拟机" class="headerlink" title="安装Parrot操作系统到VMware虚拟机"></a>安装Parrot操作系统到VMware虚拟机</h1><hr>
+<h2 id="本文完全原创，转载请标明原链接"><a href="#本文完全原创，转载请标明原链接" class="headerlink" title="本文完全原创，转载请标明原链接"></a>本文完全原创，转载请标明原链接</h2><p><font color="red"># 注意：阅读本文需要一定的VMware经验和计算机知识。</font></p>
+<hr>
+<h1 id="①-安装Parrot到VMware"><a href="#①-安装Parrot到VMware" class="headerlink" title="①.安装Parrot到VMware"></a>①.安装Parrot到VMware</h1><ol>
+<li>获得镜像。 我们要安装任何一个操作系统，首要的任务当然是获得那个系统的镜像， 所以需要前往Parrot OS的官网进行下载。<br><a href="https://www.parrotsec.org/download/">【点击这里前往Parrot官网进行安装】</a><br>或前往 <a href="http://www.parrotsec.org/download">www.parrotsec.org/download</a><br>选择一个适合的版本进行下载<font color="red">（本文使用的是iso镜像）</font>，有时候可能安装速度极慢，则用IDM等工具解决此问题。<br></li>
+<li>打开VMware。（我相信你们应该有办法解决VMware的许可证问题）<br>选择“创建新的虚拟机”，选择“典型”，在下一步中选择“安装程序光盘映像文件”并选中Parrot操作系统映像文件。<br></li>
+<li>创建虚拟机。下一步选择客户机操作系统为“Linux”，版本选“Debian 10.x 64位“，下一步，根据你的需要，改虚拟机名称和虚拟机位置。下一步根据需要，设置磁盘大小（不建议低于20GB）和虚拟磁盘的储存方式。下一步记得自定义系统硬件配置（Parrot系统要求内存不能低于4GB，否则有些功能将被停止），然后点击”完成“<br></li>
+<li>启动虚拟机。并根据系统界面的指示进行安装（6.1版本请选择带”try&#x2F;install“的一项进入系统，此时桌面上应有安装程序，点击进入才可以进入安装程序），设置磁盘分区时请选择”使用整个磁盘“并不要对磁盘进行加密，确保所有配置无误后开始安装。<br></li>
+<li>重启。待安装完毕后按照系统提示进行重启，再次开机后应进入系统桌面（有密码的需要输入用户密码），版本≥6的不需要再次设置语言，因为安装的时候已经改变系统语言了。<br></li>
+<li>设置sudo。此时你的系统无法使用sudo命令，因为没有设置root账户，需要开启终端输入<code>sudo passwd root</code>进行设置密码（设置root密码时，密码不会明文显示）。<br></li>
+</ol>
+<h1 id="②-优化系统与换源（进阶）"><a href="#②-优化系统与换源（进阶）" class="headerlink" title="②.优化系统与换源（进阶）"></a>②.优化系统与换源（进阶）</h1><h3 id="1-换源可以使系统更新源的速度更加快捷"><a href="#1-换源可以使系统更新源的速度更加快捷" class="headerlink" title="1. 换源可以使系统更新源的速度更加快捷"></a>1. 换源可以使系统更新源的速度更加快捷</h3><h5 id="更新源的位置：-etc-apt-sources-list-d-parrot-list"><a href="#更新源的位置：-etc-apt-sources-list-d-parrot-list" class="headerlink" title="更新源的位置：&#x2F;etc&#x2F;apt&#x2F;sources.list.d&#x2F;parrot.list "></a>更新源的位置：&#x2F;etc&#x2F;apt&#x2F;sources.list.d&#x2F;parrot.list <br></h5><h5 id="换源："><a href="#换源：" class="headerlink" title="换源："></a>换源：<br></h5><ol>
+<li>官方更新源（速度一般）：<br><code>deb http://deb.parrotsec.org/parrot stable main contrib non-free</code>  </li>
+<li>清华大学镜像源（速度快）：<br><code>deb https://mirrors.tuna.tsinghua.edu.cn/parrot/ parrot main contrib non-free</code>  </li>
+<li>命令行：</li>
+</ol>
+<pre><code class="bash">备份源文件  
+$ sudo cp /etc/apt/sources.list.d/parrot.list /etc/apt/sources.list.d/parrot.list.bak  
+更改源文件  
+$ sudo vim /etc/apt/sources.list.d/parrot.list  
+</code></pre>
+<p>在vim终端编辑器先点击<kbd>ESC</kbd>确保不在写入的模式，然后输入<code>:%d</code>删除所有行，再点击<kbd>A</kbd>进入输入模式，输入要改变的源并再次点击<kbd>ESC</kbd>退出输入模式，输入<code>:wq</code>保存并退出<br>注：vim终端编辑器的操作详见<br><a href="https://blog.csdn.net/u011511601/article/details/80655431">https://blog.csdn.net/u011511601/article/details/80655431</a></p>
+<hr>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>Parrot-OS</tag>
+        <tag>操作系统</tag>
       </tags>
   </entry>
 </search>
