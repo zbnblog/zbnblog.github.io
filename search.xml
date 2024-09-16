@@ -3,11 +3,11 @@
   <entry>
     <title>ZBNBLOG必看公告</title>
     <url>/2024/08/04/45/</url>
-    <content><![CDATA[<h1 id="ZBNBLOG公告"><a href="#ZBNBLOG公告" class="headerlink" title="ZBNBLOG公告"></a>ZBNBLOG公告</h1><p>版本：1.1—&gt;更新日期：2024-08-07  </p>
+    <content><![CDATA[<h1 id="ZBNBLOG公告"><a href="#ZBNBLOG公告" class="headerlink" title="ZBNBLOG公告"></a>ZBNBLOG公告</h1><p>版本：1.2—&gt;更新日期：2024-09-16</p>
 <hr>
 <h2 id="一-答疑解惑"><a href="#一-答疑解惑" class="headerlink" title="一. 答疑解惑"></a>一. 答疑解惑</h2><h3 id="1-关于评论区以及网络超时的问题"><a href="#1-关于评论区以及网络超时的问题" class="headerlink" title="1. 关于评论区以及网络超时的问题"></a>1. 关于评论区以及网络超时的问题</h3><ul>
 <li>为什么无法评论？<ul>
-<li>目前由于资金问题，导致本站点几乎所有内容都使用免费的服务，而问题也随之而来，那就是我目前已知好用的免费Web服务大多都在国外，所以很多服务在国内访问的速度都<strong>非常慢</strong>，甚至<strong>无法访问</strong>，当然了，明月使用的Twikoo评论功能以及后端MongoDB数据库也是这个问题。经过调试，终端控制台给出的错误是<code>TIME OUT</code>，所以归根到底，你无法评论的原因就是<strong><font color = "red">你的网络被“墙”了</font></strong>！</li>
+<li>目前由于资金问题，导致本站点几乎所有内容都使用免费的服务，而问题也随之而来，那就是我目前已知好用的免费Web服务大多都在国外，所以很多服务在国内访问的速度都<strong>非常慢</strong>，甚至<strong>无法访问</strong>，当然了，明月使用的Gitalk评论功能也是这个问题。经过调试，终端控制台给出的错误是<code>TIME OUT</code>，所以归根到底，你无法评论的原因就是<strong><font color = "red">你的网络被“墙”了</font></strong>！</li>
 </ul>
 </li>
 <li>我该如何应对？<ul>
@@ -31,14 +31,7 @@
 </li>
 <li>如果你有任何的文章投稿，都请发电子邮件到<code>zbnzqzs@gmail.com</code> 。</li>
 </ul>
-<h3 id="3-关于音乐"><a href="#3-关于音乐" class="headerlink" title="3. 关于音乐"></a>3. 关于音乐</h3><ul>
-<li>音乐说明<br>由于MetingJS的API出现问题，所以目前只开发音乐馆功能，音乐馆长期更新明月日常听的音乐。🎉</li>
-<li>投稿音乐<ul>
-<li>可以把音乐的链接或文件发送到<code>zbnzqzs@gmail.com</code>进行投稿~</li>
-</ul>
-</li>
-</ul>
-<h3 id="4-关于图像"><a href="#4-关于图像" class="headerlink" title="4. 关于图像"></a>4. 关于图像</h3><ul>
+<h3 id="3-关于图像"><a href="#3-关于图像" class="headerlink" title="3. 关于图像"></a>3. 关于图像</h3><ul>
 <li>为什么很多页面图像重复？<ul>
 <li>若将全部图像长时间放在本地目录上会严重拖慢服务器运行速度，打算把图像托管到图床却由于没有比较好的长期免费图床，本站曾托管过的图片<strong>总是失效</strong>或<strong>国内被“墙”</strong>，所以经过详细考虑，最终决定尽量不在网站上使用大量图像，即使使用也仅使用很少的一部分，所以才会出现现在的“很多页面没有图，”</li>
 </ul>
@@ -55,13 +48,12 @@
 </li>
 <li>联系方式<ul>
 <li>可以发邮件到<code>zbnzqzs@gmail.com</code>。</li>
-<li>如果明月在线，你可以通过此站点右下角的“聊天”功能与明月实时联系。</li>
 </ul>
 </li>
 </ul>
 <h2 id="三-关于"><a href="#三-关于" class="headerlink" title="三. 关于"></a>三. 关于</h2><ul>
 <li>关于明月？<ul>
-<li>请 <em><strong>详见</strong></em>本站主目录下的<code>/about</code>（关于页面），可通过网站页面上方快捷导航直达关于页面。</li>
+<li>请 <em><strong>详见</strong></em>本站主目录下的<code>/about</code>（关于页面），可通过网站快捷导航直达关于页面。</li>
 </ul>
 </li>
 </ul>
@@ -72,8 +64,7 @@
         <category>公告</category>
       </categories>
       <tags>
-        <tag>必读</tag>
-        <tag>原创</tag>
+        <tag>公告</tag>
       </tags>
   </entry>
   <entry>
